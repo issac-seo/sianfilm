@@ -409,6 +409,26 @@ function NavBar({ tab, onChange }: { tab: Tab; onChange: (t: Tab) => void }) {
     </button>
   );
 
+  const IconLink = ({
+    href,
+    src,
+    label,
+  }: { href: string; src: string; label: string }) => (
+    <Link
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      title={label}
+      className="inline-flex items-center justify-center rounded-full p-2 hover:ring-2 hover:ring-black/50 transition"
+    >
+      <span className="sr-only">{label}</span>
+      <div className="relative h-6 w-6 md:h-7 md:w-7">
+        <Image src={src} alt={label} fill className="object-contain" sizes="28px" />
+      </div>
+    </Link>
+  );
+
   return (
     <div className="fixed top-0 left-0 right-0 z-50 w-full border-b bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/40">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
@@ -443,19 +463,11 @@ function NavBar({ tab, onChange }: { tab: Tab; onChange: (t: Tab) => void }) {
           </select>
         </div>
 
-        <div className="flex items-center gap-2">
-          {/* <a href="https://www.flaticon.com/kr/free-icons/instagram-" title="instagram 로고 아이콘">Instagram 로고 아이콘 제작자: Freepik - Flaticon</a> */}
-          <Link href={BRAND.inpock} target="_blank" rel="noopener noreferrer" className="rounded border border-black bg-orange-300 px-3 py-1.5 text-sm text-black">
-            Info
-          </Link>   
-          {/* <a href="https://www.flaticon.com/kr/free-icons/instagram-" title="instagram 로고 아이콘">Instagram 로고 아이콘 제작자: Freepik - Flaticon</a> */}         
-          <Link href={BRAND.instagram} target="_blank" rel="noopener noreferrer" className="rounded border border-black bg-pink-300 px-3 py-1.5 text-sm text-black">
-            Instagram
-          </Link>
-          {/* <a href="https://www.flaticon.com/kr/free-icons/instagram-" title="instagram 로고 아이콘">Instagram 로고 아이콘 제작자: Freepik - Flaticon</a> */}
-          <Link href={BRAND.kakao} target="_blank" rel="noopener noreferrer" className="rounded border border-black bg-yellow-300 px-3 py-1.5 text-sm text-black">
-            Kakao
-          </Link>
+        {/* 아이콘 링크들 */}
+        <div className="flex items-center gap-1.5 md:gap-2">
+          <IconLink href={BRAND.inpock}     src="/images/icon/inpock.png" label="Inpock" />
+          <IconLink href={BRAND.instagram}  src="/images/icon/insta.png"  label="Instagram" />
+          <IconLink href={BRAND.kakao}      src="/images/icon/kakao.png"  label="Kakao" />
         </div>
       </div>
     </div>
@@ -999,10 +1011,26 @@ function FAQSection() {
 function Footer() {
   return (
     <footer
-      className="py-10 text-center text-sm"
+      className="py-8 text-center text-sm space-y-2"
       style={{ background: `linear-gradient(180deg, ${signature.to}, ${signature.via})` }}
     >
-      © {new Date().getFullYear()} {BRAND.name}. All rights reserved.
+      <div>
+        © {new Date().getFullYear()} {BRAND.name}. All rights reserved.
+      </div>
+
+      {/* 아이콘 출처(Flaticon 권고에 따라 사용자에게 보이는 위치에 노출) */}
+      <div className="text-xs text-black/70">
+        아이콘 출처:&nbsp;
+        <a
+          href="https://www.flaticon.com/kr/free-icons/"
+          title="운영자 아이콘"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-2 hover:text-black"
+        >
+          운영자 아이콘 제작자: Mayor Icons - Flaticon
+        </a>
+      </div>
     </footer>
   );
 }
