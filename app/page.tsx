@@ -800,39 +800,40 @@ function Gallery() {
               </button>
             </div>
 
-            {/* ✅ 하단 툴바: 항상 보이게 고정 + safe-area 패딩 */}
-            <div
-              className="sticky bottom-0 left-0 right-0 w-full"
-              style={{ marginTop: "8px" }}
-            >
+            {/* ✅ 하단 툴바: 버튼과 페이지 정보를 2줄로 분리 */}
+            <div className="sticky bottom-0 left-0 right-0 w-full" style={{ marginTop: "8px" }}>
               <div
-                className="mx-auto max-w-[1100px] rounded-xl bg-black/35 backdrop-blur-md text-white flex items-center justify-center gap-2 md:gap-3 px-3 py-2"
+                className="mx-auto max-w-[1100px] rounded-xl bg-black/35 backdrop-blur-md text-white flex flex-col items-center justify-center px-3 py-2"
                 style={{
                   paddingBottom: "max(10px, env(safe-area-inset-bottom))",
                 }}
               >
-                <button
-                  onClick={() => go(-1)}
-                  className="rounded border border-white/30 px-4 py-2 text-sm hover:bg-white/10"
-                >
-                  이전
-                </button>
-                <button
-                  onClick={closeModal}
-                  className="rounded border border-white/30 px-4 py-2 text-sm hover:bg-white/10"
-                >
-                  닫기
-                </button>
-                <button
-                  onClick={() => go(1)}
-                  className="rounded border border-white/30 px-4 py-2 text-sm hover:bg-white/10"
-                >
-                  다음
-                </button>
+                {/* 첫 줄: 이전 / 닫기 / 다음 */}
+                <div className="flex items-center justify-center gap-2 md:gap-3">
+                  <button
+                    onClick={() => go(-1)}
+                    className="rounded border border-white/30 px-4 py-2 text-sm hover:bg-white/10"
+                  >
+                    이전
+                  </button>
+                  <button
+                    onClick={closeModal}
+                    className="rounded border border-white/30 px-4 py-2 text-sm hover:bg-white/10"
+                  >
+                    닫기
+                  </button>
+                  <button
+                    onClick={() => go(1)}
+                    className="rounded border border-white/30 px-4 py-2 text-sm hover:bg-white/10"
+                  >
+                    다음
+                  </button>
+                </div>
 
-                <span className="ml-2 hidden md:inline text-xs text-white/80">
+                {/* 둘째 줄: 페이지 표시 */}
+                <div className="mt-1 text-xs text-white/80 text-center">
                   {String(focusIdx + 1).padStart(2, "0")} / {String(pageImages.length).padStart(2, "0")} (페이지 {page + 1})
-                </span>
+                </div>
               </div>
             </div>
           </div>
