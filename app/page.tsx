@@ -540,11 +540,6 @@ function HeroSlideshow() {
             두 분의 이야기와 그 날의 분위기가 녹아든<br />
             <span className="font-medium text-pink-600"> 행복한 순간들</span>을 담고 있습니다.
           </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link href={BRAND.kakao} target="_blank" rel="noopener noreferrer" className="rounded border px-5 py-3 text-sm font-medium hover:bg-black hover:text-white">
-              카카오로 문의
-            </Link>
-          </div>
         </div>
 
         <div className="flex flex-col items-center">
@@ -743,46 +738,102 @@ function Gallery() {
         </button>
       </div>
 
-      {/* 확대 보기 모달: 투명 여백 + 원본 비율 유지 */}
+      {/* 확대 보기 모달: 모바일에서 하단 버튼 항상 노출 (safe-area 대응) */}
       {open && pageImages.length > 0 && (
         <div
-          className="fixed inset-0 z-50 grid place-items-center bg-black/70 p-4"
+          className="fixed inset-0 z-50 bg-black/70"
           onClick={closeModal}
           role="dialog"
           aria-modal="true"
           aria-label="갤러리 확대 보기"
         >
+          {/* 전체를 세로 플렉스: 위(이미지), 아래(툴바 고정) */}
           <div
             ref={modalRef}
             onClick={(e) => e.stopPropagation()}
-            className="flex flex-col items-center gap-3 w-full max-w-[1200px]"
+            className="relative mx-auto h-[100dvh] max-w-[1200px] px-4 md:px-6 flex flex-col"
+            style={{
+              // iOS 구형 대응용: 필요시 커스텀 vh 변수 쓰고 싶다면 여기에 넣을 수 있음
+              // height: 'calc(var(--vh, 1vh) * 100)',
+              overscrollBehavior: "contain",
+              touchAction: "manipulation",
+            }}
           >
-            {/* ✨ 배경 완전 투명: 레터박스 영역이 투명으로 보이도록 */}
+            {/* 이미지 영역: 남는 높이를 전부 차지 */}
+            <div className="relative flex-1 min-h-0 grid place-items-center">
+              <div
+                className="relative w-full max-w-[1100px] h-full rounded-xl bg-transparent shadow-2xl ring-1 ring-black/10 overflow-hidden"
+              >
+                <Image
+                  src={pageImages[focusIdx]}
+                  alt={`확대 이미지 ${focusIdx + 1}`}
+                  fill
+                  className="object-contain select-none"
+                  sizes="(max-width: 768px) 92vw, 60vw"
+                  priority
+                />
+              </div>
+
+              {/* 좌우 이동 화살표(선택): 화면 양옆에 반투명 버튼 */}
+              <button
+                onClick={() => go(-1)}
+                aria-label="이전"
+                className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 rounded-full bg-black/40 text-white px-3 py-2 backdrop-blur hover:bg-black/60"
+              >
+                ‹
+              </button>
+              <button
+                onClick={() => go(1)}
+                aria-label="다음"
+                className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 rounded-full bg-black/40 text-white px-3 py-2 backdrop-blur hover:bg-black/60"
+              >
+                ›
+              </button>
+
+              {/* 닫기(X) 버튼 상단 고정(선택) */}
+              <button
+                onClick={closeModal}
+                aria-label="닫기"
+                className="absolute top-3 right-3 rounded-full bg-black/40 text-white px-3 py-1 backdrop-blur hover:bg-black/60"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* ✅ 하단 툴바: 항상 보이게 고정 + safe-area 패딩 */}
             <div
-              className="relative overflow-hidden rounded-xl bg-transparent"
-              style={{
-                width: "min(92vw, 1100px)",
-                height: "min(86vh, 1100px)",
-              }}
+              className="sticky bottom-0 left-0 right-0 w-full"
+              style={{ marginTop: "8px" }}
             >
-              <Image
-                src={pageImages[focusIdx]}
-                alt={`확대 이미지 ${focusIdx + 1}`}
-                fill
-                className="object-contain select-none"
-                sizes="(max-width: 768px) 92vw, 60vw"
-                priority
-              />
-            </div>
+              <div
+                className="mx-auto max-w-[1100px] rounded-xl bg-black/35 backdrop-blur-md text-white flex items-center justify-center gap-2 md:gap-3 px-3 py-2"
+                style={{
+                  paddingBottom: "max(10px, env(safe-area-inset-bottom))",
+                }}
+              >
+                <button
+                  onClick={() => go(-1)}
+                  className="rounded border border-white/30 px-4 py-2 text-sm hover:bg-white/10"
+                >
+                  이전
+                </button>
+                <button
+                  onClick={closeModal}
+                  className="rounded border border-white/30 px-4 py-2 text-sm hover:bg-white/10"
+                >
+                  닫기
+                </button>
+                <button
+                  onClick={() => go(1)}
+                  className="rounded border border-white/30 px-4 py-2 text-sm hover:bg-white/10"
+                >
+                  다음
+                </button>
 
-            <div className="flex gap-2">
-              <button onClick={() => go(-1)} className="rounded border px-4 py-2 bg-white/80 hover:bg-white">이전</button>
-              <button onClick={closeModal} className="rounded border px-4 py-2 bg-white/80 hover:bg-white">닫기(Esc)</button>
-              <button onClick={() => go(1)} className="rounded border px-4 py-2 bg-white/80 hover:bg-white">다음</button>
-            </div>
-
-            <div className="text-xs text-white/80">
-              {String(focusIdx + 1).padStart(2, "0")} / {String(pageImages.length).padStart(2, "0")} (페이지 {page + 1})
+                <span className="ml-2 hidden md:inline text-xs text-white/80">
+                  {String(focusIdx + 1).padStart(2, "0")} / {String(pageImages.length).padStart(2, "0")} (페이지 {page + 1})
+                </span>
+              </div>
             </div>
           </div>
         </div>
