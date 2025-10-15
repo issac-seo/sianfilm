@@ -63,46 +63,46 @@ type QA = { q: string; a: React.ReactNode };
 
 // ====== 메인 슬라이드 이미지 ======
 const MAIN_IMAGES: string[] = [
-  "/images/main/m-01.jpg",
-  "/images/main/m-02.jpg",
-  "/images/main/m-03.jpg",
-  "/images/main/m-04.jpg",
-  "/images/main/m-05.jpg",
-  "/images/main/m-06.jpg",
+  "/images/main/m-01.JPG",
+  "/images/main/m-02.JPG",
+  "/images/main/m-03.JPG",
+  "/images/main/m-04.JPG",
+  "/images/main/m-05.JPG",
+  "/images/main/m-06.JPG",
 ];
 
 // ====== 갤러리 이미지 ======
 const IMAGES = [
-  "/images/gallery/g-01.jpg",
-  "/images/gallery/g-02.jpg",
-  "/images/gallery/g-03.jpg",
-  "/images/gallery/g-04.jpg",
-  "/images/gallery/g-05.jpg",
-  "/images/gallery/g-06.jpg",
-  "/images/gallery/g-07.jpg",
-  "/images/gallery/g-08.jpg",
-  "/images/gallery/g-09.jpg",
-  "/images/gallery/g-10.jpg",
-  "/images/gallery/g-11.jpg",
-  "/images/gallery/g-12.jpg",
-  "/images/gallery/g-13.jpg",
-  "/images/gallery/g-14.jpg",
-  "/images/gallery/g-15.jpg",
-  "/images/gallery/g-16.jpg",
-  "/images/gallery/g-17.jpg",
-  "/images/gallery/g-18.jpg",
-  "/images/gallery/g-19.jpg",
-  "/images/gallery/g-20.jpg",
-  "/images/gallery/g-21.jpg",
-  "/images/gallery/g-22.jpg",
-  "/images/gallery/g-23.jpg",
-  "/images/gallery/g-24.jpg",
-  "/images/gallery/g-25.jpg",
-  "/images/gallery/g-26.jpg",
-  "/images/gallery/g-27.jpg",
-  "/images/gallery/g-28.jpg",
-  "/images/gallery/g-29.jpg",
-  "/images/gallery/g-30.jpg",
+  "/images/gallery/g-01.JPG",
+  "/images/gallery/g-02.JPG",
+  "/images/gallery/g-03.JPG",
+  "/images/gallery/g-04.JPG",
+  "/images/gallery/g-05.JPG",
+  "/images/gallery/g-06.JPG",
+  "/images/gallery/g-07.JPG",
+  "/images/gallery/g-08.JPG",
+  "/images/gallery/g-09.JPG",
+  "/images/gallery/g-10.JPG",
+  "/images/gallery/g-11.JPG",
+  "/images/gallery/g-12.JPG",
+  "/images/gallery/g-13.JPG",
+  "/images/gallery/g-14.JPG",
+  "/images/gallery/g-15.JPG",
+  "/images/gallery/g-16.JPG",
+  "/images/gallery/g-17.JPG",
+  "/images/gallery/g-18.JPG",
+  "/images/gallery/g-19.JPG",
+  "/images/gallery/g-20.JPG",
+  "/images/gallery/g-21.JPG",
+  "/images/gallery/g-22.JPG",
+  "/images/gallery/g-23.JPG",
+  "/images/gallery/g-24.JPG",
+  "/images/gallery/g-25.JPG",
+  "/images/gallery/g-26.JPG",
+  "/images/gallery/g-27.JPG",
+  "/images/gallery/g-28.JPG",
+  "/images/gallery/g-29.JPG",
+  "/images/gallery/g-30.JPG",
 ];
 
 // ====== 패키지 데이터 ======
@@ -444,12 +444,15 @@ function NavBar({ tab, onChange }: { tab: Tab; onChange: (t: Tab) => void }) {
         </div>
 
         <div className="flex items-center gap-2">
+          {/* <a href="https://www.flaticon.com/kr/free-icons/instagram-" title="instagram 로고 아이콘">Instagram 로고 아이콘 제작자: Freepik - Flaticon</a> */}
           <Link href={BRAND.inpock} target="_blank" rel="noopener noreferrer" className="rounded border border-black bg-orange-300 px-3 py-1.5 text-sm text-black">
             Info
-          </Link>
+          </Link>   
+          {/* <a href="https://www.flaticon.com/kr/free-icons/instagram-" title="instagram 로고 아이콘">Instagram 로고 아이콘 제작자: Freepik - Flaticon</a> */}         
           <Link href={BRAND.instagram} target="_blank" rel="noopener noreferrer" className="rounded border border-black bg-pink-300 px-3 py-1.5 text-sm text-black">
             Instagram
           </Link>
+          {/* <a href="https://www.flaticon.com/kr/free-icons/instagram-" title="instagram 로고 아이콘">Instagram 로고 아이콘 제작자: Freepik - Flaticon</a> */}
           <Link href={BRAND.kakao} target="_blank" rel="noopener noreferrer" className="rounded border border-black bg-yellow-300 px-3 py-1.5 text-sm text-black">
             Kakao
           </Link>
@@ -519,10 +522,10 @@ function HeroSlideshow() {
             <span className="text-neutral-700">- 한 순간, 평생의 기억</span>
           </h1>
           <p className="mt-4 text-neutral-600 leading-6">
-            시안필름은 따뜻하고 자연스러움을 추구하며
+            시안필름은 따뜻하고 자연스러움을 추구하며<br />
             <span className="font-medium text-pink-600"> 한컷 한컷</span> 신중하게 담아드립니다.
             <br />
-            두 분의 이야기와 그 날의 분위기가 녹아든
+            두 분의 이야기와 그 날의 분위기가 녹아든<br />
             <span className="font-medium text-pink-600"> 행복한 순간들</span>을 담고 있습니다.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
