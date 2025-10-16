@@ -2,7 +2,7 @@
 name : sianfilm-homepage
 createDate : 2025.09.01
 updateDate : 2025.10.16
-version : 1.0.1
+version : 1.0.2
 --- */
 
 "use client";
@@ -419,7 +419,7 @@ function PackageCard({ pkg, onSelect, open }: { pkg: Pkg; onSelect: () => void; 
         {pkg.price.noSNS} <span className="text-xs text-neutral-500">(SNS 업로드X)</span>
       </div>
       <div className="mt-1 text-base font-semibold">
-        {pkg.price.withSNS} <span className="text-sm text-neutral-500">(SNS 업로드O)</span>
+        {pkg.price.withSNS} <span className="text-xs text-neutral-500">(SNS 업로드O)</span>
       </div>
       <ul className="mt-4 space-y-2 text-sm">
         {pkg.summaryPoints.map((p, i) => (
@@ -505,15 +505,14 @@ function NoticeAndInquiry() {
             <br />
             * 페이백 할인이 모두 진행된 후의 금액으로 현금영수증을 발급해드리고 있습니다.
             <br />
-            * 계약 후기는 계약 후~촬영 전에 작성해 주시면 되고{" "}
-            <span className="underline underline-offset-3 text-black">제목에는 시안필름, 서울웨딩스냅</span>
-            <br />
+            * 계약 후기는 계약 후 ~ 촬영 전에 작성해 주시면 되고{" "}
+            <span className="underline underline-offset-3 text-black">제목에는 시안필름, 서울웨딩스냅 </span>
             두 키워드가 들어가야 합니다. 내용은 인스타그램 피드캡쳐본과 함께 작성해 주셔야 하며,
             <br />
             <span className="text-blue-600">#시안필름 #시안필름웨딩스냅 #서울웨딩스냅</span> 해시태그 필수입니다.
             <br />
             * 촬영 후기는 보정본 수령 후 2주 이내로 작성해 주셔야 하며 보정본 10장 이상과 함께 작성 부탁드립니다.
-            <span className="underline underline-offset-3 text-black">제목에는 시안필름, 서울웨딩스냅</span>
+            <span className="underline underline-offset-3 text-black"> 제목에는 시안필름, 서울웨딩스냅 </span>
             두 키워드가 들어가야 하며, 내용 마지막에 시안필름 인스타 주소와{" "}
             <span className="text-blue-600">#시안필름 #시안필름웨딩스냅 #서울웨딩스냅</span> 해시태그 필수입니다.
           </p>

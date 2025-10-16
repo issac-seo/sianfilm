@@ -21,7 +21,7 @@ export const PACKAGES_2025: Pkg[] = [
         },
         summaryPoints: [
         "원본 전체 제공 + 아이폰스냅 포함",
-        <>세부보정본 <strong className="font-bold text-pink-600">50장</strong> + 색감보정본 30장 + 분할컷 5컷</>,
+        <>세부보정본 <strong className="font-bold text-pink-600">50장</strong> + 색감보정본 30장 + 분할 5컷</>,
         "3~7초 4K 영상클립 10개 내외(원본)",
         ],
         details: [
@@ -41,7 +41,7 @@ export const PACKAGES_2025: Pkg[] = [
         featured: true,
         summaryPoints: [
         "원본 전체 제공",
-        <>세부보정본 <strong className="font-bold text-pink-600">30장</strong> + 색감보정본 20장 + 분할컷 3컷</>,
+        <>세부보정본 <strong className="font-bold text-pink-600">30장</strong> + 색감보정본 20장 + 분할 3컷</>,
         "3~7초 4K 영상클립 5개 내외(원본)",
         ],
         details: ["BEST 패키지", "보정본: 셀렉일부터 4주 이내 제공", "장소 1~2곳, 의상 1~2벌"],
@@ -56,7 +56,7 @@ export const PACKAGES_2025: Pkg[] = [
         },
         summaryPoints: [
         "원본 전체 제공",
-        <>세부보정본 <strong className="font-bold text-pink-600">10장</strong> + 색감보정본 10장 + 분할컷 2컷</>,
+        <>세부보정본 <strong className="font-bold text-pink-600">10장</strong> + 색감보정본 10장 + 분할 2컷</>,
         "영상클립 미제공(필요시 사전 문의)",
         ],
         details: ["보정본: 셀렉일부터 3주 이내 제공", "장소 1곳, 의상 1~2벌", "지역: 서울(바다 제외)"],
@@ -74,7 +74,7 @@ export const PACKAGES_2026: Pkg[] = [
         },
         summaryPoints: [
         "원본 전체 제공 + 아이폰스냅 포함",
-        <>세부보정본 <strong className="font-bold text-pink-600">30장</strong> + 분할컷 5컷</>,
+        <>세부보정본 <strong className="font-bold text-pink-600">30장</strong> + 분할 5컷</>,
         "3~7초 4K 영상클립 10개 내외(원본)",
         ],
         details: [
@@ -94,7 +94,7 @@ export const PACKAGES_2026: Pkg[] = [
         featured: true,
         summaryPoints: [
         "원본 전체 제공",
-        <>세부보정본 <strong className="font-bold text-pink-600">20장</strong> + 분할컷 3컷</>,
+        <>세부보정본 <strong className="font-bold text-pink-600">20장</strong> + 분할 3컷</>,
         "3~7초 4K 영상클립 5개 내외(원본)",
         ],
         details: ["BEST 패키지", "보정본: 셀렉일부터 3주 이내 제공", "장소 2곳, 의상 2벌"],
@@ -109,7 +109,7 @@ export const PACKAGES_2026: Pkg[] = [
         },
         summaryPoints: [
         "원본 전체 제공",
-        <>세부보정본 <strong className="font-bold text-pink-600">10장</strong> + 분할컷 2컷</>,
+        <>세부보정본 <strong className="font-bold text-pink-600">10장</strong> + 분할 2컷</>,
         "영상클립 미제공(필요시 사전 문의)",
         ],
         details: ["보정본: 셀렉일부터 3주 이내 제공", "장소 1곳, 의상 1벌", "지역: 서울(바다 제외)"],
