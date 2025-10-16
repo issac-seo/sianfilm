@@ -2,7 +2,7 @@
 name : sianfilm-homepage
 createDate : 2025.09.01
 updateDate : 2025.10.16
-version : 1.0.2
+version : 1.0.3
 --- */
 
 "use client";
@@ -226,7 +226,7 @@ function Gallery() {
     return [...GALLERY_IMAGES].sort((a, b) => parseN(a) - parseN(b));
   }, []);
 
-  const pageSize = 10;
+  const pageSize = 15;
   const pages = useMemo(() => {
     const out: string[][] = [];
     for (let i = 0; i < ordered.length; i += pageSize) out.push(ordered.slice(i, i + pageSize));
@@ -304,7 +304,7 @@ function Gallery() {
           이미지를 <b>클릭</b>하면 확대해서 볼 수 있어요.
         </p>
 
-        <div className="grid grid-cols-5 gap-0 p-1">
+        <div className="grid grid-cols-5 grid-rows-3 gap-0.5 p-0.5 auto-rows-[minmax(0,1fr)]">
           {pageImages.map((src, i) => (
             <button
               key={src}
