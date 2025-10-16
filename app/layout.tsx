@@ -4,10 +4,10 @@ import { cuteFont } from "./fonts";
 import { BRAND } from "@/data/brand";
 
 export const metadata: Metadata = {
-  title: "시안필름 | 서울 웨딩스냅 · 필름 무드",
+  title: "시안필름 | 웨딩스냅 · 필름 무드",
   description: BRAND.shortAbout,
   openGraph: {
-    title: "시안필름 | 서울 웨딩스냅 · 필름 무드",
+    title: "시안필름 | 웨딩스냅 · 필름 무드",
     description: BRAND.shortAbout,
     type: "website",
     images: [
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "시안필름 | 서울 웨딩스냅 · 필름 무드",
+    title: "시안필름 | 웨딩스냅 · 필름 무드",
     description: BRAND.shortAbout,
     images: ["/og/sianfilm-og.png"],
   },

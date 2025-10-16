@@ -1,3 +1,10 @@
+/* --- 
+name : sianfilm-homepage
+createDate : 2025.09.01
+updateDate : 2025.10.16
+version : 1.0.1
+--- */
+
 "use client";
 
 import Image from "next/image";
@@ -293,11 +300,11 @@ function Gallery() {
           <div className="mt-1 h-[2px] w-48 bg-white/80 rounded-full" />
         </div>
 
-        <p className="pt-20 px-4 text-center text-xs text-neutral-600">
-          이미지를 <b>클릭</b>하면 확대해서 볼 수 있어요. <span className="hidden sm:inline">(←/→ 이동, ESC 닫기)</span>
+        <p className="pt-17 px-4 text-center text-xs text-neutral-700">
+          이미지를 <b>클릭</b>하면 확대해서 볼 수 있어요.
         </p>
 
-        <div className="grid grid-cols-5 gap-0 p-3">
+        <div className="grid grid-cols-5 gap-0 p-1">
           {pageImages.map((src, i) => (
             <button
               key={src}
@@ -537,27 +544,6 @@ function NoticeAndInquiry() {
           ))}
         </ul>
       </div>
-
-      {/* 예약 문의 */}
-      <div className="mt-8 rounded-3xl border bg-white/60 p-8 text-center backdrop-blur">
-        <h3 className="text-2xl font-semibold">예약 문의</h3>
-        <p className="mx-auto mt-2 max-w-xl text-sm text-neutral-700">
-          원하는 날짜/시간, 장소(실내/실외), 컨셉(클래식/캐주얼 등)을
-          <br />
-          적어 보내주시면 빠르게 스케줄 확인 후 답변드립니다.
-        </p>
-        <div className="mt-5 flex flex-wrap justify-center gap-3">
-          <Link href={BRAND.kakao} target="_blank" rel="noopener noreferrer" className="rounded border px-5 py-3 text-sm font-medium backdrop-blur hover:bg-black hover:text-white">
-            카카오 채널
-          </Link>
-          <Link href={BRAND.instagram} target="_blank" rel="noopener noreferrer" className="rounded border px-5 py-3 text-sm font-medium backdrop-blur hover:bg-black hover:text-white">
-            Instagram
-          </Link>
-          <Link href={BRAND.inpock} target="_blank" rel="noopener noreferrer" className="rounded border px-5 py-3 text-sm font-medium backdrop-blur hover:bg-black hover:text-white">
-            전체 보기(Inpock)
-          </Link>
-        </div>
-      </div>
     </section>
   );
 }
@@ -568,14 +554,14 @@ function FAQSection() {
       <SectionTitle title="Q & A" subtitle="(상담 시 자주하시는 질문들을 모아봤어요.)" />
       <div className="divide-y divide-black/10 rounded-2xl border bg-white/60 p-4 sm:p-6 backdrop-blur">
         {FAQS.map((item, i) => (
-          <details key={i} className="group py-4">
-            <summary className="cursor-pointer list-none select-none text-2xl font-bold">
+          <details key={i} className="group py-3">
+            <summary className="cursor-pointer list-none select-none sm:text-xl font-bold">
               <span className="mr-2">Q.</span>
               {item.q}
               <span className="ml-2 text-sm text-neutral-500 group-open:hidden">열기</span>
               <span className="ml-2 text-sm text-neutral-500 hidden group-open:inline">닫기</span>
             </summary>
-            <div className="mt-2 pl-6 text-sm sm:text-base leading-7">
+            <div className="mt-2 pl-6 text-sm sm:text-sm leading-7 text-neutral-800">
               <span className="mr-2 font-semibold">A.</span>
               {item.a}
             </div>
