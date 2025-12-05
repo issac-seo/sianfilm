@@ -14,7 +14,7 @@ import { titleFont, cuteFont } from "./fonts";
 
 import { BRAND, signature } from "@/data/brand";
 import { MAIN_IMAGES } from "@/data/images";
-import { PACKAGES_2025, PACKAGES_2026, type Pkg } from "@/data/packages";
+import { PACKAGES_2026, type Pkg } from "@/data/packages";
 import { FAQS } from "@/data/faqs";
 import { DISCOUNTS, NOTES, OPTIONS } from "@/data/options";
 
@@ -296,60 +296,71 @@ function ProductCollage() {
   ].filter(Boolean);
 
   const TallImg = ({ src, alt }: { src: string; alt: string }) => (
-    <div className="relative w-[260px] h-[360px] md:w-[320px] md:h-[440px] lg:w-[380px] lg:h-[500px] overflow-hidden rounded-md border border-neutral-300 bg-neutral-50 shadow-sm">
+    <div className="
+      relative 
+      w-full 
+      h-[340px] 
+      sm:h-[420px] 
+      md:w-[260px] md:h-[360px] 
+      lg:w-[340px] lg:h-[460px]
+      overflow-hidden rounded-md border border-neutral-300 bg-neutral-50 shadow-sm
+    ">
       <Image src={src} alt={alt} fill className="object-cover" />
     </div>
   );
 
   const WideImg = ({ src, alt }: { src: string; alt: string }) => (
-    <div className="relative w-full max-w-[900px] h-[260px] md:h-[320px] lg:h-[380px] overflow-hidden rounded-md border border-neutral-300 bg-neutral-50 shadow-sm">
+    <div className="
+      relative 
+      w-full 
+      h-[240px] 
+      sm:h-[280px] 
+      md:h-[320px] 
+      lg:h-[380px]
+      overflow-hidden rounded-md border border-neutral-300 bg-neutral-50 shadow-sm
+    ">
       <Image src={src} alt={alt} fill className="object-cover" />
     </div>
   );
 
   return (
-    // ❗ max-w 제한을 없애서 섹션(max-w-6xl) 전체 폭을 쓰도록
     <div className="mb-24 space-y-24">
-      {/* --- SECTION 1: 위쪽 두 장 (왼쪽으로 붙이되, 더 크게) --- */}
+      
+      {/* SECTION 1 — 모바일에서는 세로 1개씩 / 데스크탑에서는 2개 좌측 정렬 */}
       <div className="w-full flex justify-start">
         <div className="flex flex-col gap-6 md:flex-row md:gap-10">
-          {imgs[0] && <TallImg src={imgs[0]} alt="sian film product 1" />}
-          {imgs[1] && <TallImg src={imgs[1]} alt="sian film product 2" />}
+          {imgs[0] && <TallImg src={imgs[0]} alt="img1" />}
+          {imgs[1] && <TallImg src={imgs[1]} alt="img2" />}
         </div>
       </div>
 
-      {/* --- SECTION 2: 가운데 영역 --- */}
+      {/* SECTION 2 — 문구 + 이미지 */}
       <div className="w-full space-y-12">
-        {/* 2-1. 문구(왼쪽) + 가로 사진(오른쪽) */}
+        
+        {/* 모바일: 세로 / 데스크탑: 좌·우 */}
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-          {/* 텍스트 영역 */}
+          
           <div className="md:w-[35%] lg:w-[32%]">
-            <h3
-              className={clsx(
-                titleFont.className,
-                "text-lg md:text-2xl lg:text-3xl text-neutral-800"
-              )}
-            >
+            <h3 className={clsx(titleFont.className, "text-xl sm:text-2xl text-neutral-800")}>
               We hold your happiness in every frame-!
             </h3>
-            <p className="mt-4 text-[11px] md:text-xs leading-relaxed text-neutral-500">
-              Love isn&apos;t about grand moments on a single day,
+            <p className="mt-4 text-[12px] sm:text-[13px] text-neutral-500 leading-relaxed">
+              Love isn’t about grand moments on a single day,
               <br className="hidden md:block" />
-              but the quiet laughter you share on all the days in-between.
+              but the quiet laughter you share on ordinary days in–between.
             </p>
           </div>
 
-          {/* 가로 사진 – 오른쪽, 더 넓게 */}
           <div className="md:w-[60%] lg:w-[62%] flex justify-end">
-            {imgs[2] && <WideImg src={imgs[2]} alt="sian film product 3" />}
+            {imgs[2] && <WideImg src={imgs[2]} alt="wide" />}
           </div>
         </div>
 
-        {/* 2-2. 아래 두 장 (오른쪽으로 붙이고, 더 크게) */}
+        {/* SECTION 3 — 모바일: 세로 / 데스크탑: 두 장 우측 정렬 */}
         <div className="w-full flex justify-end">
-          <div className="flex flex-col items-center gap-6 md:flex-row md:gap-10">
-            {imgs[3] && <TallImg src={imgs[3]} alt="sian film product 4" />}
-            {imgs[4] && <TallImg src={imgs[4]} alt="sian film product 5" />}
+          <div className="flex flex-col gap-6 md:flex-row md:gap-10">
+            {imgs[3] && <TallImg src={imgs[3]} alt="img4" />}
+            {imgs[4] && <TallImg src={imgs[4]} alt="img5" />}
           </div>
         </div>
       </div>
@@ -359,50 +370,64 @@ function ProductCollage() {
 
 function ProductCard({ pkg }: { pkg: Pkg }) {
   return (
-    <article className="border-t border-neutral-200 py-6 text-sm sm:text-base">
-      {/* 상단 이름 + 시간 */}
-      <div className="flex items-baseline justify-between gap-4">
-        <h3 className="text-base sm:text-lg font-semibold tracking-wide">
-          {pkg.name}
-        </h3>
-        <div className="text-right text-xs sm:text-sm text-neutral-600">
-          {pkg.hours}
+    <article className="border-b border-neutral-200 py-10 text-sm sm:text-base">
+      <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between md:gap-16">
+        {/* LEFT: 패키지명 + 가격 */}
+        <div className="md:w-1/3">
+          <h3
+            className={clsx(
+              titleFont.className,
+              "text-2xl sm:text-3xl tracking-tight"
+            )}
+          >
+            {pkg.name}
+          </h3>
+
+          {/* 메인 가격 (포트폴리오 동의 기준) */}
+          <p className="mt-4 text-base sm:text-lg text-neutral-800">
+            {pkg.price.withSNS} <span className="text-sm">won</span>
+          </p>
+
+          {/* 서브 가격 (SNS 미게시) */}
+          <p className="mt-1 text-xs sm:text-sm text-neutral-500">
+            SNS 미게시 기준 {pkg.price.noSNS} won
+          </p>
+        </div>
+
+        {/* RIGHT: 상세 구성 */}
+        <div className="md:w-2/3 text-xs sm:text-sm text-neutral-700 leading-relaxed">
+          {/* 촬영 시간 한 줄 안내 */}
+          {pkg.hours && (
+            <p className="mb-3 text-neutral-600">
+              {pkg.hours}
+            </p>
+          )}
+
+          {/* 요약 포인트 */}
+          {pkg.summaryPoints?.length > 0 && (
+            <ul className="mb-3 space-y-1">
+              {pkg.summaryPoints.map((p, i) => (
+                <li key={i} className="flex gap-2">
+                  <span className="mt-[7px] h-[1px] w-4 bg-neutral-400" />
+                  <span>{p}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {/* 세부사항 */}
+          {pkg.details?.length > 0 && (
+            <ul className="space-y-1">
+              {pkg.details.map((d) => (
+                <li key={d} className="flex gap-2">
+                  <span className="mt-[7px] h-[1px] w-3 bg-neutral-300" />
+                  <span>{d}</span>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
-
-      {/* 가격 */}
-      <div className="mt-3 text-xs sm:text-sm text-neutral-800 space-y-1">
-        <div>
-          <span className="font-medium">SNS 미게시</span> · {pkg.price.noSNS}
-        </div>
-        <div>
-          <span className="font-medium">포트폴리오 동의</span> · {pkg.price.withSNS}
-        </div>
-      </div>
-
-      {/* 요약 포인트 */}
-      {pkg.summaryPoints?.length > 0 && (
-        <ul className="mt-3 space-y-1 text-xs sm:text-sm text-neutral-700">
-          {pkg.summaryPoints.map((p, i) => (
-            <li key={i} className="flex gap-2">
-              <span className="mt-[6px] h-[1px] w-4 bg-neutral-400" />
-              <span>{p}</span>
-            </li>
-          ))}
-        </ul>
-      )}
-
-      {/* 세부사항: 항상 그대로 노출 */}
-      {pkg.details?.length > 0 && (
-        <div className="mt-4 space-y-1 text-xs sm:text-sm text-neutral-700">
-          {pkg.details.map((d) => (
-            <div key={d} className="flex gap-2">
-              <span className="mt-[6px] h-[1px] w-4 bg-neutral-300" />
-              <span>{d}</span>
-            </div>
-          ))}
-        </div>
-      )}
     </article>
   );
 }
@@ -436,8 +461,8 @@ function ProductSection() {
       {/* 네가 보내준 느낌 그대로 콜라주 구성 */}
       <ProductCollage />
 
-      {/* 패키지 리스트 (예약 버튼 없음 / 연도 탭 없음) */}
-      <div className="border-t border-neutral-900">
+      {/* 패키지 리스트 */}
+      <div className="mt-16 border-t border-neutral-200">
         {data.map((pkg) => (
           <ProductCard key={pkg.key} pkg={pkg} />
         ))}
@@ -626,18 +651,6 @@ function FAQSection() {
   );
 }
 
-function Footer() {
-  return (
-    <footer
-      className="border-t border-neutral-200 py-6 text-center text-xs text-neutral-500"
-    >
-      <div>
-        © {new Date().getFullYear()} {BRAND.name}. All rights reserved.
-      </div>
-    </footer>
-  );
-}
-
 export default function Page() {
   const [tab, setTab] = useState<Tab>("home");
   const mainRef = useRef<HTMLElement | null>(null);
@@ -707,7 +720,6 @@ export default function Page() {
         {tab === "reservation" && <ReservationSection />}
         {tab === "gallery" && <GallerySection />}
         {tab === "faq" && <FAQSection />}
-        <Footer />
       </main>
     </div>
   );
