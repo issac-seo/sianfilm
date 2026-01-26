@@ -81,17 +81,17 @@ function NavBar({ tab, onChange }: { tab: Tab; onChange: (t: Tab) => void }) {
         role="banner"
       >
         {/* 안쪽 컨테이너: 좌/중/우 정렬 */}
-        <div className="flex h-14 w-full items-center justify-between px-4">
+        <div className="flex h-17 w-full items-center justify-between px-4">
           {/* 1) 왼쪽 끝: 햄버거 버튼 */}
           <button
             type="button"
             onClick={() => setOpen(true)}
-            className="flex flex-col justify-center gap-[3px] border border-neutral-900 px-2 py-1 hover:bg-neutral-900 hover:text-white transition"
+            className="flex flex-col justify-center gap-[3px] px-2 py-1 hover:text-gray-300 transition"
             aria-label="메뉴 열기"
           >
-            <span className="block h-[1px] w-4 bg-current" />
-            <span className="block h-[1px] w-4 bg-current" />
-            <span className="block h-[1px] w-4 bg-current" />
+            <span className="mb-0.5 block h-[2px] w-5 bg-current" />
+            <span className="mb-0.5 block h-[2px] w-5 bg-current" />
+            <span className="block h-[2px] w-5 bg-current" />
           </button>
 
           {/* 가운데: SIAN FILM만 */}
@@ -104,7 +104,7 @@ function NavBar({ tab, onChange }: { tab: Tab; onChange: (t: Tab) => void }) {
             <span
               className={clsx(
                 titleFont.className,
-                "text-base sm:text-lg tracking-[0.32em] uppercase"
+                "text-base sm:text-3xl tracking-[0.32em] uppercase"
               )}
             >
               SIAN FILM
@@ -232,7 +232,7 @@ function HomeHero() {
         <h1
           className={clsx(
             titleFont.className,
-            "text-3xl sm:text-4xl md:text-5xl leading-tight"
+            "text-3xl sm:text-3xl md:text-5xl leading-tight"
           )}
         >
           SIAN FILM
@@ -243,28 +243,9 @@ function HomeHero() {
           시간에 따라 변하지 않는 흑백의 결처럼,<br />
           오래 남는 한 장을 위해 천천히 눌러 담습니다.
         </p>
-
-        <div className="flex flex-wrap gap-3 pt-2 text-xs sm:text-sm">
-          <Link
-            href={BRAND.kakao}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center border border-neutral-900 px-4 py-2 tracking-[0.18em] uppercase hover:bg-neutral-900 hover:text-white transition"
-          >
-            Kakao Reservation
-          </Link>
-          <Link
-            href={BRAND.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center border border-neutral-300 px-4 py-2 tracking-[0.18em] uppercase hover:border-neutral-900 transition"
-          >
-            Instagram
-          </Link>
-        </div>
       </div>
 
-      {/* 이미지 영역 – 한 장만 조용히 */}
+      {/* 이미지 영역 */}
       <div className="flex-1">
         {mainImage && (
           <div className="relative aspect-[4/5] w-full max-w-md border border-neutral-900 bg-neutral-50">
@@ -278,9 +259,6 @@ function HomeHero() {
             />
           </div>
         )}
-        <p className="mt-3 text-[11px] text-neutral-500 tracking-[0.18em] uppercase">
-          main scene
-        </p>
       </div>
     </section>
   );
@@ -295,37 +273,105 @@ function ProductCollage() {
     MAIN_IMAGES[5],
   ].filter(Boolean);
 
+  // ✅ 스크롤 등장/퇴장 + (선택) stagger
+  useEffect(() => {
+    const els = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const el = entry.target as HTMLElement;
+          if (entry.isIntersecting) el.classList.add("is-visible");
+          // 나가면 다시 숨기고 싶으면 주석 해제
+          // else el.classList.remove("is-visible");
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    els.forEach((el, i) => {
+      el.style.setProperty("--d", `${i * 90}ms`); // stagger
+      io.observe(el);
+    });
+
+    return () => io.disconnect();
+  }, []);
+
+  // ✅ blur-up(이미지 로드되면 blur 제거)
+  const onImgLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    (e.currentTarget as HTMLImageElement).classList.add("is-loaded");
+  };
+
   const TallImg = ({ src, alt }: { src: string; alt: string }) => (
-    <div className="
-      relative 
-      w-full 
-      h-[340px] 
-      sm:h-[420px] 
-      md:w-[260px] md:h-[360px] 
-      lg:w-[340px] lg:h-[460px]
-      overflow-hidden rounded-md border border-neutral-300 bg-neutral-50 shadow-sm
-    ">
-      <Image src={src} alt={alt} fill className="object-cover" />
+    <div
+      data-reveal
+      className={clsx(
+        // reveal + hover
+        "reveal group relative overflow-hidden rounded-md border border-neutral-300 bg-neutral-50 shadow-sm",
+        "transition-transform duration-500 will-change-transform",
+        "hover:-translate-y-1 hover:shadow-md",
+
+        // ✅ 모바일: 폭/높이(비율)를 확정해서 빈 박스 방지
+        "w-[100vw] max-w-[768px] mx-auto aspect-[4/5]",
+        // ✅ 태블릿/PC: 기존 사이즈 유지
+        "md:mx-0 md:w-[768px] md:aspect-auto md:h-[440px]",
+        "lg:w-[380px] lg:h-[500px]"
+      )}
+    >
+      {/* 오버레이(은은하게) */}
+      <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/0 to-black/0" />
+      </div>
+
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        onLoadingComplete={(img) => img.classList.add("is-loaded")}
+        className={clsx(
+          "object-cover",
+          "scale-[1.02] transition duration-700 will-change-transform",
+          "group-hover:scale-[1.08]",
+          "img-blur"
+        )}
+        sizes="(max-width: 1280px) 92vw, (max-width: 1920px) 320px, 380px"
+      />
     </div>
   );
 
   const WideImg = ({ src, alt }: { src: string; alt: string }) => (
-    <div className="
-      relative 
-      w-full 
-      h-[240px] 
-      sm:h-[280px] 
-      md:h-[320px] 
-      lg:h-[380px]
-      overflow-hidden rounded-md border border-neutral-300 bg-neutral-50 shadow-sm
-    ">
-      <Image src={src} alt={alt} fill className="object-cover" />
+    <div
+      data-reveal
+      className={clsx(
+        "reveal group relative w-full overflow-hidden rounded-md border border-neutral-300 bg-neutral-50 shadow-sm",
+        "transition-transform duration-500 will-change-transform",
+        "hover:-translate-y-1 hover:shadow-md",
+        "h-[440px] sm:h-[480px] md:h-[520px] lg:h-[580px]"
+      )}
+    >
+      <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/0 to-black/0" />
+      </div>
+
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        onLoadingComplete={(img) => img.classList.add("is-loaded")}
+        className={clsx(
+          "object-cover",
+          "scale-[1.01] transition duration-700 will-change-transform",
+          "group-hover:scale-[1.06]",
+          "img-blur"
+        )}
+        sizes="(max-width: 768px) 100vw, 60vw"
+      />
     </div>
   );
 
   return (
-    <div className="mb-24 space-y-24">
-      
+    <div className="mb-20 space-y-12">
+
       {/* SECTION 1 — 모바일에서는 세로 1개씩 / 데스크탑에서는 2개 좌측 정렬 */}
       <div className="w-full flex justify-start">
         <div className="flex flex-col gap-6 md:flex-row md:gap-10">
@@ -336,34 +382,48 @@ function ProductCollage() {
 
       {/* SECTION 2 — 문구 + 이미지 */}
       <div className="w-full space-y-12">
-        
         {/* 모바일: 세로 / 데스크탑: 좌·우 */}
-        <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-          
-          <div className="md:w-[35%] lg:w-[32%]">
-            <h3 className={clsx(titleFont.className, "text-xl sm:text-2xl text-neutral-800")}>
-              We hold your happiness in every frame-!
-            </h3>
-            <p className="mt-4 text-[12px] sm:text-[13px] text-neutral-500 leading-relaxed">
-              Love isn’t about grand moments on a single day,
-              <br className="hidden md:block" />
-              but the quiet laughter you share on ordinary days in–between.
-            </p>
-          </div>
+        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">        
+        <div
+          data-reveal
+          className="reveal md:w-[40%] lg:w-[43%]"
+          style={{ ["--d" as any]: "0ms" }}
+        >
+          <h3
+            data-reveal
+            className={clsx(
+              titleFont.className,
+              "reveal text-xl sm:text-2xl text-neutral-800"
+            )}
+            style={{ ["--d" as any]: "120ms" }}
+          >
+            Every frame holds a piece of<br />your happiness.
+          </h3>
 
-          <div className="md:w-[60%] lg:w-[62%] flex justify-end">
+          <p
+            data-reveal
+            className="reveal mt-3 text-[12px] sm:text-[16px] text-neutral-500 leading-relaxed"
+            style={{ ["--d" as any]: "240ms" }}
+          >
+            Not just the big moments,<br />
+            but the gentle laughter that fills
+            the days between.
+          </p>
+        </div>
+          <div className="md:w-[60%] lg:w-[57%] flex justify-end">
             {imgs[2] && <WideImg src={imgs[2]} alt="wide" />}
           </div>
         </div>
+      </div>  
 
-        {/* SECTION 3 — 모바일: 세로 / 데스크탑: 두 장 우측 정렬 */}
-        <div className="w-full flex justify-end">
-          <div className="flex flex-col gap-6 md:flex-row md:gap-10">
-            {imgs[3] && <TallImg src={imgs[3]} alt="img4" />}
-            {imgs[4] && <TallImg src={imgs[4]} alt="img5" />}
-          </div>
+      {/* SECTION 3 — 모바일: 세로 / 데스크탑: 두 장 우측 정렬 */}
+      <div className="w-full flex justify-start">
+        <div className="flex flex-col gap-6 md:flex-row md:gap-10">
+          {imgs[3] && <TallImg src={imgs[3]} alt="img4" />}
+          {imgs[4] && <TallImg src={imgs[4]} alt="img5" />}
         </div>
       </div>
+      
     </div>
   );
 }
@@ -452,8 +512,8 @@ function ProductSection() {
           Product Guide
         </h2>
         <p className="mt-3 text-xs sm:text-sm text-neutral-600 max-w-xl">
-          2026년 기준 패키지 안내입니다.  
-          시안필름의 촬영 스타일과 실제 현장 분위기는 아래 이미지를 참고해주세요.
+          2026년 기준 패키지 안내입니다.<br />
+          시안필름의 촬영 스타일과 실제 현장 분위기는 아래 이미지를 참고해주세요.<br />
           패키지 상세 구성은 하단에서 확인할 수 있습니다.
         </p>
       </div>
@@ -545,7 +605,7 @@ function ReservationSection() {
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center border border-neutral-900 px-4 py-2 tracking-[0.16em] uppercase hover:bg-neutral-900 hover:text-white transition"
           >
-            Kakao 열기
+            Kakao
           </Link>
         </div>
       </div>
@@ -612,7 +672,7 @@ function GallerySection() {
         rel="noopener noreferrer"
         className="mt-8 inline-flex items-center justify-center border border-neutral-900 px-6 py-3 text-xs sm:text-sm tracking-[0.2em] uppercase hover:bg-neutral-900 hover:text-white transition"
       >
-        Go to Instagram
+        Instagram
       </Link>
     </section>
   );
