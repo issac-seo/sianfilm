@@ -1,8 +1,8 @@
 /* --- 
 name : sianfilm-homepage
 createDate : 2025.09.01
-updateDate : 2025.12.04
-version : 2.0.0
+updateDate : 2026.03.06
+version : 2.0.1
 --- */
 
 "use client";
@@ -12,7 +12,7 @@ import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { titleFont, cuteFont } from "./fonts";
 
-import { BRAND, signature } from "@/data/brand";
+import { BRAND} from "@/data/brand";
 import { MAIN_IMAGES } from "@/data/images";
 import { PACKAGES_2026, type Pkg } from "@/data/packages";
 import { FAQS } from "@/data/faqs";
@@ -23,6 +23,10 @@ type Tab = "home" | "product" | "reservation" | "gallery" | "faq";
 function clsx(...c: (string | false | null | undefined)[]) {
   return c.filter(Boolean).join(" ");
 }
+
+type CSSVarStyle = React.CSSProperties & {
+  [key: `--${string}`]: string | number;
+};
 
 function SectionTitle({ title, subtitle }: { title: string; subtitle?: string }) {
   return (
@@ -229,7 +233,7 @@ function HomeHero() {
     return () => cancelAnimationFrame(raf);
   }, []);
 
-  const enter = (delayMs: number) =>
+  const enter = () =>
     clsx(
       "transition duration-700 ease-out will-change-[transform,opacity,filter]",
       mounted
@@ -244,7 +248,7 @@ function HomeHero() {
         <p
           className={clsx(
             "text-[11px] tracking-[0.25em] text-neutral-500 uppercase",
-            enter(0)
+            enter()
           )}
           style={{ transitionDelay: "80ms" }}
         >
@@ -255,7 +259,7 @@ function HomeHero() {
           className={clsx(
             titleFont.className,
             "text-3xl sm:text-4xl md:text-5xl leading-tight",
-            enter(0)
+            enter()
           )}
           style={{ transitionDelay: "160ms" }}
         >
@@ -265,7 +269,7 @@ function HomeHero() {
         <p
           className={clsx(
             "text-sm sm:text-base text-neutral-700 leading-relaxed",
-            enter(0)
+            enter()
           )}
           style={{ transitionDelay: "260ms" }}
         >
@@ -339,11 +343,6 @@ function ProductCollage() {
 
     return () => io.disconnect();
   }, []);
-
-  // ✅ blur-up(이미지 로드되면 blur 제거)
-  const onImgLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
-    (e.currentTarget as HTMLImageElement).classList.add("is-loaded");
-  };
 
   const TallImg = ({ src, alt }: { src: string; alt: string }) => (
     <div
@@ -430,7 +429,7 @@ function ProductCollage() {
         <div
           data-reveal
           className="reveal md:w-[40%] lg:w-[40%]"
-          style={{ ["--d" as any]: "0ms" }}
+          style={{ "--d": "0ms" } as CSSVarStyle}
         >
           <h3
             data-reveal
@@ -438,7 +437,7 @@ function ProductCollage() {
               titleFont.className,
               "reveal text-xl sm:text-2xl text-neutral-800"
             )}
-            style={{ ["--d" as any]: "120ms" }}
+            style={{ "--d": "120ms" } as CSSVarStyle}
           >
             Every frame holds<br />
             a piece of your happiness.
@@ -447,7 +446,7 @@ function ProductCollage() {
           <p
             data-reveal
             className="reveal mt-3 text-[12px] sm:text-[16px] text-neutral-500 leading-relaxed"
-            style={{ ["--d" as any]: "240ms" }}
+            style={{ "--d": "240ms" } as CSSVarStyle}
           >
             Not just the big moments,<br />
             but the gentle laughter<br />
@@ -566,50 +565,6 @@ function ProductSection() {
         ))}
       </div>
     </section>
-  );
-}
-
-function ProductGalleryStrip() {
-  const imgs = MAIN_IMAGES.slice(1, 5); // 2~5번째 이미지 사용 (원하는 범위로 조정)
-
-  if (!imgs.length) return null;
-
-  return (
-    <div className="mb-10">
-      <div className="grid grid-cols-3 gap-2 auto-rows-[120px] sm:auto-rows-[160px] md:auto-rows-[180px]">
-        {/* 첫 장은 크게 */}
-        {imgs[0] && (
-          <div className="relative col-span-2 row-span-2 border border-neutral-900 bg-neutral-50">
-            <Image
-              src={imgs[0]}
-              alt="sian film product main"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 60vw"
-            />
-          </div>
-        )}
-
-        {/* 나머지 조그만 카드들 */}
-        {imgs.slice(1).map((src, i) => (
-          <div
-            key={src}
-            className="relative border border-neutral-300 bg-neutral-50"
-          >
-            <Image
-              src={src}
-              alt={`sian film product ${i + 2}`}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 33vw, 20vw"
-            />
-          </div>
-        ))}
-      </div>
-      <p className="mt-2 text-[11px] text-neutral-500 tracking-[0.16em] uppercase">
-        scenes from sian film
-      </p>
-    </div>
   );
 }
 
