@@ -1,8 +1,8 @@
 /* --- 
 name : sianfilm-homepage
 createDate : 2025.09.01
-updateDate : 2026.03.06 14:43
-version : 2.1.7
+updateDate : 2026.03.06 14:48
+version : 2.1.8
 --- */
 
 "use client";
@@ -351,7 +351,7 @@ function ProductCollage() {
         "hover:-translate-y-1 hover:shadow-md",
 
         // ✅ 모바일: 폭/높이(비율)를 확정해서 빈 박스 방지
-        "w-[88vw] max-w-[440px] mx-auto aspect-[4/5]",
+        "w-[92vw] max-w-[440px] mx-auto aspect-[4/5]",
         // ✅ 태블릿/PC: 기존 사이즈 유지
         "md:mx-0 md:w-[820px] md:aspect-auto md:h-[480px]",
         "lg:w-[400px] lg:h-[540px]"
@@ -384,7 +384,7 @@ function ProductCollage() {
         "reveal group relative w-full overflow-hidden rounded-sm border border-neutral-300 bg-neutral-50 shadow-sm",
         "transition-transform duration-500 will-change-transform",
         "hover:-translate-y-1 hover:shadow-md",
-        "h-[580px] sm:h-[660px] md:h-[740px] lg:h-[820px] w-[78vw] w-max-[440px]",
+        "h-[580px] sm:h-[660px] md:h-[740px] lg:h-[820px] w-[74vw] w-max-[440px]",
       )}
     >
       <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
