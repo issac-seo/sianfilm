@@ -1,8 +1,8 @@
 /* --- 
 name : sianfilm-homepage
 createDate : 2025.09.01
-updateDate : 2026.03.06 14:03
-version : 2.1.2
+updateDate : 2026.03.06 14:14
+version : 2.1.3
 --- */
 
 "use client";
@@ -285,7 +285,7 @@ function HomeHero() {
         {mainImage && (
           <div
             className={clsx(
-              "relative aspect-[4/5] w-full max-w-xl border-b border-neutral-200 bg-neutral-50 overflow-hidden rounded-sm",
+              "relative aspect-[3/4] w-full max-w-xl border-b border-neutral-200 bg-neutral-50 overflow-hidden rounded-sm",
               "transition duration-1000 ease-out will-change-[transform,opacity,filter]",
               mounted
                 ? "opacity-100 translate-y-0 blur-0"
@@ -320,7 +320,6 @@ function ProductCollage() {
     MAIN_IMAGES[5],
   ].filter(Boolean);
 
-  // ✅ 스크롤 등장/퇴장 + (선택) stagger
   useEffect(() => {
     const els = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
 
@@ -329,8 +328,6 @@ function ProductCollage() {
         entries.forEach((entry) => {
           const el = entry.target as HTMLElement;
           if (entry.isIntersecting) el.classList.add("is-visible");
-          // 나가면 다시 숨기고 싶으면 주석 해제
-          // else el.classList.remove("is-visible");
         });
       },
       { threshold: 0.15 }
@@ -360,7 +357,6 @@ function ProductCollage() {
         "lg:w-[400px] lg:h-[540px]"
       )}
     >
-      {/* 오버레이(은은하게) */}
       <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
         <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/0 to-black/0" />
       </div>
@@ -388,7 +384,7 @@ function ProductCollage() {
         "reveal group relative w-full overflow-hidden rounded-sm border border-neutral-300 bg-neutral-50 shadow-sm",
         "transition-transform duration-500 will-change-transform",
         "hover:-translate-y-1 hover:shadow-md",
-        "h-[620px] sm:h-[660px] md:h-[720px] lg:h-[780px]"
+        "h-[660px] sm:h-[720px] md:h-[780px] lg:h-[840px]"
       )}
     >
       <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
