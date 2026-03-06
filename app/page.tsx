@@ -1,8 +1,8 @@
 /* --- 
 name : sianfilm-homepage
 createDate : 2025.09.01
-updateDate : 2026.03.06 11:29
-version : 2.0.7
+updateDate : 2026.03.06 12:01
+version : 2.1.0
 --- */
 
 "use client";
@@ -677,7 +677,7 @@ function ReservationIntro({
           )}
           style={{ transitionDelay: "80ms" }}
         >
-          <div className="relative w-full h-[340px] sm:h-[420px] md:h-[540px]">
+            <div className="relative w-full h-[340px] sm:h-[420px] md:h-[540px]">
             {/* overlay */}
             <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500">
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/0 to-black/0" />
@@ -713,7 +713,7 @@ function ReservationIntro({
       </div>
 
       {/* RIGHT: 세로 사진 + 짧은 글 */}
-      <div className="flex justify-center md:justify-self-end md:block">
+      <div className="md:justify-self-end">
         <div
           className={clsx(
             "group relative overflow-hidden rounded-sm border border-neutral-300 bg-neutral-50 shadow-sm",
@@ -722,7 +722,16 @@ function ReservationIntro({
           )}
           style={{ transitionDelay: "120ms" }}
         >
-          <div className="relative mx-auto w-[78vw] max-w-[380px] aspect-[3/4]">
+            <div
+              data-reveal
+              className={clsx(
+                // ✅ 모바일: 폭/높이(비율)를 확정해서 빈 박스 방지
+                "w-[92vw] max-w-[440px] mx-auto aspect-[4/5]",
+                // ✅ 태블릿/PC: 기존 사이즈 유지
+                "md:relative md:w-[82vw] md:max-w-[380px] md:aspect-[3/4]",
+                "lg:w-[400px] lg:h-[540px]"
+              )}
+            >
             {/* overlay */}
             <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500">
               <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-black/0 to-black/0" />
