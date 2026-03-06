@@ -1,8 +1,8 @@
 /* --- 
 name : sianfilm-homepage
 createDate : 2025.09.01
-updateDate : 2026.03.06 11:21
-version : 2.0.6
+updateDate : 2026.03.06 11:29
+version : 2.0.7
 --- */
 
 "use client";
@@ -671,7 +671,7 @@ function ReservationIntro({
       <div>
         <div
           className={clsx(
-            "group relative overflow-hidden rounded-sm bg-neutral-50 shadow-sm",
+            "group relative overflow-hidden rounded-sm border border-neutral-200 bg-neutral-50 shadow-sm",
             "transition duration-500 will-change-transform",
             enter("0ms")
           )}
@@ -713,16 +713,16 @@ function ReservationIntro({
       </div>
 
       {/* RIGHT: 세로 사진 + 짧은 글 */}
-      <div className="md:justify-self-end">
+      <div className="flex justify-center md:justify-self-end md:block">
         <div
           className={clsx(
-            "group relative overflow-hidden rounded-sm bg-neutral-50 shadow-sm",
+            "group relative overflow-hidden rounded-sm border border-neutral-300 bg-neutral-50 shadow-sm",
             "transition duration-500 will-change-transform",
             enter("0ms")
           )}
           style={{ transitionDelay: "120ms" }}
         >
-          <div className="relative w-[78vw] max-w-[380px] aspect-[3/4]">
+          <div className="relative mx-auto w-[78vw] max-w-[380px] aspect-[3/4]">
             {/* overlay */}
             <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500">
               <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-black/0 to-black/0" />
