@@ -1,7 +1,7 @@
 export const BRAND = {
     name: "SIAN FILM",
     tagline: "한 순간, 평생의 기억",
-    shortAbout: "자연광과 필름 무드로 두 분의 이야기를 담백하고 영원하게 기록합니다.",
+    shortAbout: "시안필름은 따뜻하고 자연스러움을 추구하며, 한컷 한컷 신중하게 담아드립니다.",
     kakao: "https://pf.kakao.com/_xnYWpG",
     instagram: "https://www.instagram.com/sian_film/",
     inpock:
