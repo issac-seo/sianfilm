@@ -1,8 +1,8 @@
 /* --- 
 name : sianfilm-homepage
 createDate : 2025.09.01
-updateDate : 2026.03.06
-version : 2.0.1
+updateDate : 2026.03.06 11:06
+version : 2.0.4
 --- */
 
 "use client";
@@ -354,7 +354,7 @@ function ProductCollage() {
         "hover:-translate-y-1 hover:shadow-md",
 
         // ✅ 모바일: 폭/높이(비율)를 확정해서 빈 박스 방지
-        "w-[100vw] max-w-[768px] mx-auto aspect-[4/5]",
+        "w-full max-w-[420px] mx-auto aspect-[4/5]",
         // ✅ 태블릿/PC: 기존 사이즈 유지
         "md:mx-0 md:w-[820px] md:aspect-auto md:h-[480px]",
         "lg:w-[400px] lg:h-[540px]"
@@ -415,8 +415,8 @@ function ProductCollage() {
     <div className="mb-20 space-y-12">
 
       {/* SECTION 1 — 모바일에서는 세로 1개씩 / 데스크탑에서는 2개 좌측 정렬 */}
-      <div className="w-full flex justify-start">
-        <div className="flex flex-col gap-6 md:flex-row md:gap-6">
+      <div className="w-full flex justify-center md:justify-start">
+        <div className="flex flex-col items-center gap-6 md:flex-row md:items-start md:gap-6">
           {imgs[0] && <TallImg src={imgs[0]} alt="img1" />}
           {imgs[1] && <TallImg src={imgs[1]} alt="img2" />}
         </div>
@@ -460,8 +460,8 @@ function ProductCollage() {
       </div>  
 
       {/* SECTION 3 — 모바일: 세로 / 데스크탑: 두 장 우측 정렬 */}
-      <div className="w-full flex justify-start">
-        <div className="flex flex-col gap-6 md:flex-row md:gap-6">
+      <div className="w-full flex justify-center md:justify-start">
+        <div className="flex flex-col items-center gap-6 md:flex-row md:items-start md:gap-6">
           {imgs[3] && <TallImg src={imgs[3]} alt="img4" />}
           {imgs[4] && <TallImg src={imgs[4]} alt="img5" />}
         </div>
@@ -583,7 +583,7 @@ function ReservationSection() {
   const goPartner = () => setView("partnership");
 
   return (
-    <section className="mx-auto max-w-6xl px-4 py-4 min-h-[calc(100vh-56px)]">
+    <section className="mt-6 mx-auto max-w-6xl px-4 py-4 min-h-[calc(100vh-56px)]">
       {/* 상단 서브탭: 항상 노출 + 현재 탭 강조(밑줄) */}
       <div className="top-[56px] z-10 mb-5 bg-white/80 py-3 backdrop-blur">
         <div className="flex items-center justify-center gap-8">
@@ -666,10 +666,9 @@ function ReservationIntro({
     );
 
   return (
-    <div className="mt-8 grid gap-4 md:grid-cols-2 md:items-end">
+    <div className="mt-6 grid gap-4 md:grid-cols-2 md:items-end">
       {/* LEFT: 가로 사진 + 큰 문구 */}
       <div>
-        {/* ✅ Product 같은 카드 스타일 + hover + blur-up */}
         <div
           className={clsx(
             "group relative overflow-hidden rounded-sm border border-neutral-200 bg-neutral-50 shadow-sm",
@@ -678,7 +677,6 @@ function ReservationIntro({
           )}
           style={{ transitionDelay: "80ms" }}
         >
-          {/* 16:9 */}
           <div className="relative w-full h-[340px] sm:h-[420px] md:h-[540px]">
             {/* overlay */}
             <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500">
@@ -704,7 +702,7 @@ function ReservationIntro({
         <h3
           className={clsx(
             titleFont.className,
-            "mt-8 ml-4 text-2xl sm:text-3xl md:text-4xl leading-[1.1] text-neutral-800",
+            "mt-8 ml-6 mb-6 text-2xl sm:text-3xl md:text-4xl leading-[1.1] text-neutral-800",
             enter("0ms")
           )}
           style={{ transitionDelay: "180ms" }}
@@ -724,7 +722,6 @@ function ReservationIntro({
           )}
           style={{ transitionDelay: "120ms" }}
         >
-          {/* 3:4 */}
           <div className="relative w-[78vw] max-w-[380px] aspect-[3/4]">
             {/* overlay */}
             <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500">
@@ -749,7 +746,7 @@ function ReservationIntro({
 
         <p
           className={clsx(
-            "mt-5 ml-4 max-w-[380px] text-xs sm:text-sm text-neutral-700 leading-relaxed",
+            "mt-5 ml-6 max-w-[380px] text-xs sm:text-sm text-neutral-700 leading-relaxed",
             enter("0ms")
           )}
           style={{ transitionDelay: "260ms" }}
