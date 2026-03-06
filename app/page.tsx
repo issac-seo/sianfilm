@@ -1,8 +1,8 @@
 /* --- 
 name : sianfilm-homepage
 createDate : 2025.09.01
-updateDate : 2026.03.06 11:14
-version : 2.0.5
+updateDate : 2026.03.06 11:21
+version : 2.0.6
 --- */
 
 "use client";
@@ -671,7 +671,7 @@ function ReservationIntro({
       <div>
         <div
           className={clsx(
-            "group relative overflow-hidden rounded-sm border border-neutral-200 bg-neutral-50 shadow-sm",
+            "group relative overflow-hidden rounded-sm bg-neutral-50 shadow-sm",
             "transition duration-500 will-change-transform",
             enter("0ms")
           )}
@@ -716,7 +716,7 @@ function ReservationIntro({
       <div className="md:justify-self-end">
         <div
           className={clsx(
-            "group relative overflow-hidden rounded-sm border border-neutral-300 bg-neutral-50 shadow-sm",
+            "group relative overflow-hidden rounded-sm bg-neutral-50 shadow-sm",
             "transition duration-500 will-change-transform",
             enter("0ms")
           )}
@@ -960,7 +960,7 @@ function ReservationPartnerPanel() {
       ],
     },
     {
-      title: "Dress / Styling",
+      title: "Dress",
       items: [
         {
           name: "아뜰리에 이본느",
@@ -979,7 +979,7 @@ function ReservationPartnerPanel() {
       ],
     },
     {
-      title: "Helper / Hair Change",
+      title: "Helper",
       items: [
         { name: "고은실장님", instagram: ["@goeun_letter_"] },
         { name: "연지실장님", instagram: ["@wedding_yeonji"] },
@@ -1003,7 +1003,7 @@ function ReservationPartnerPanel() {
       ],
     },
     {
-      title: "Bouquet / Flower",
+      title: "Bouquet",
       items: [
         {
           name: "오르네먼트",
