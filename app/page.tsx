@@ -1,8 +1,8 @@
 /* --- 
 name : sianfilm-homepage
 createDate : 2025.09.01
-updateDate : 2026.03.06 14:48
-version : 2.1.8
+updateDate : 2026.03.06 14:50
+version : 2.1.9
 --- */
 
 "use client";
@@ -384,7 +384,7 @@ function ProductCollage() {
         "reveal group relative w-full overflow-hidden rounded-sm border border-neutral-300 bg-neutral-50 shadow-sm",
         "transition-transform duration-500 will-change-transform",
         "hover:-translate-y-1 hover:shadow-md",
-        "h-[580px] sm:h-[660px] md:h-[740px] lg:h-[820px] w-[74vw] w-max-[440px]",
+        "h-[580px] sm:h-[660px] md:h-[740px] lg:h-[820px] w-[68vw] w-max-[440px]",
       )}
     >
       <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
