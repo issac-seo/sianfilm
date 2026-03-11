@@ -1,8 +1,8 @@
 /* --- 
 name : sianfilm-homepage
 createDate : 2025.09.01
-updateDate : 2026.03.11 15:42
-version : 2.2.2
+updateDate : 2026.03.11 15:49
+version : 2.2.3
 --- */
 
 "use client";
@@ -783,7 +783,7 @@ function ReservationGuidePanel() {
                 />
               </div>
               <p className="mt-2 ml-1 text-[10px] sm:text-xs text-neutral-700 leading-relaxed">
-                QR 스캔 시 카카오톡으로 연결됩니다.
+                QR 스캔 시 카카오채널로 연결됩니다.
               </p>
             </div>
           }
