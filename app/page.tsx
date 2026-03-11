@@ -1,8 +1,8 @@
 /* --- 
 name : sianfilm-homepage
 createDate : 2025.09.01
-updateDate : 2026.03.11 15:23
-version : 2.2.1
+updateDate : 2026.03.11 15:42
+version : 2.2.2
 --- */
 
 "use client";
@@ -768,10 +768,26 @@ function ReservationIntro({
 function ReservationGuidePanel() {
   return (
     <div className="border-t border-neutral-200">
-      <ReservationInfoRow
-        title="Reservation"
-        subtitle="예약"
-      >
+        <ReservationInfoRow
+          title="Reservation"
+          subtitle="예약"
+          leftExtra={
+            <div className="mt-5 w-full max-w-[200px]">
+              <div className="relative aspect-square overflow-hidden bg-white">
+                <Image
+                  src="/images/icon/kakao-qr.png"
+                  alt="카카오톡 채널 QR 코드"
+                  fill
+                  className="object-contain"
+                  sizes="260px"
+                />
+              </div>
+              <p className="mt-2 ml-1 text-[10px] sm:text-xs text-neutral-700 leading-relaxed">
+                QR 스캔 시 카카오톡으로 연결됩니다.
+              </p>
+            </div>
+          }
+        >
         <p className="mb-6 text-base text-neutral-950 font-medium">
           ✔️카톡은 1번만 보내주세요. (2번 이상 발송 시 후순위로 밀릴 수 있어요)
         </p>
@@ -1115,10 +1131,12 @@ function ReservationPartnerPanel() {
 function ReservationInfoRow({
   title,
   subtitle,
+  leftExtra,
   children,
 }: {
   title: string;
   subtitle?: string;
+  leftExtra?: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
@@ -1134,6 +1152,8 @@ function ReservationInfoRow({
               {subtitle}
             </p>
           )}
+
+          {leftExtra && <div className="mt-8">{leftExtra}</div>}
         </div>
 
         {/* RIGHT */}
