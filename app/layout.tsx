@@ -4,14 +4,44 @@ import { cuteFont } from "./fonts";
 import { BRAND } from "@/data/brand";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://sianfilm.com"),
   title: "시안필름 | 웨딩스냅 · 필름 무드",
   description: BRAND.shortAbout,
+  keywords: [
+    "시안필름",
+    "SIAN FILM",
+    "웨딩스냅",
+    "웨딩 스냅",
+    "웨딩 촬영",
+    "본식 스냅",
+    "스냅 사진",
+    "필름 무드",
+  ],
+  alternates: {
+    canonical: "https://sianfilm.com",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   openGraph: {
     title: "시안필름 | 웨딩스냅 · 필름 무드",
     description: BRAND.shortAbout,
+    url: "https://sianfilm.com",
+    siteName: "시안필름",
+    locale: "ko_KR",
     type: "website",
     images: [
-      { url: "/og/sianfilm-og.png", width: 1200, height: 630, alt: "SIAN FILM OG" },
+      {
+        url: "/og/sianfilm-og.png",
+        width: 1200,
+        height: 630,
+        alt: "SIAN FILM OG",
+      },
     ],
   },
   twitter: {
@@ -21,22 +51,25 @@ export const metadata: Metadata = {
     images: ["/og/sianfilm-og.png"],
   },
   icons: {
-    icon: "/images/icon/insta.png",
-    shortcut: "/images/icon/insta.png",
-    apple: "/images/icon/insta.png",
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: BRAND.name,
     description: BRAND.shortAbout,
-    image: ["/images/main/m-01.JPG"],
+    url: "https://sianfilm.com",
+    image: ["https://sianfilm.com/images/main/m-01.JPG"],
     sameAs: [BRAND.instagram, BRAND.kakao, BRAND.inpock],
     areaServed: ["Seoul", "Incheon"],
-    // url은 런타임 도메인으로 자동 처리해도 되고, 배포 도메인 문자열로 고정해도 OK
   };
 
   return (
@@ -47,9 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${cuteFont.className}`}>
-        {children}
-      </body>
+      <body className={cuteFont.className}>{children}</body>
     </html>
   );
 }
