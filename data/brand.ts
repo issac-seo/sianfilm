@@ -7,6 +7,7 @@ export const BRAND = {
     inpock:
     "https://link.inpock.co.kr/sianfilm?fbclid=PAZXh0bgNhZW0CMTEAAafniL2ppGIOtvllsgMW2f8RNehxDFnHvC7z7wyWMZHWygdtYIJgjc0LQ8Y3JA_aem_yd0vNMsshRlkfBwRXS8KMg",
     dress: "https://m.blog.naver.com/summer_night_snap/223850357747",
+    pinterest: "https://kr.pinterest.com/sianfilm/",
 };
 
 

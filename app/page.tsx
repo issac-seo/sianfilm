@@ -1170,20 +1170,33 @@ function GallerySection() {
     <section className="mx-auto flex min-h-[calc(100vh-56px)] max-w-5xl flex-col items-center justify-center px-4 py-10 text-center">
       <SectionTitle
         title="GALLERY"
-        subtitle="시안필름의 사진들은 인스타그램에서 확인하실 수 있습니다."
+        subtitle="시안필름의 사진들은 인스타그램 또는 핀터레스트에서 확인하실 수 있습니다."
       />
       <p className="max-w-md text-xs sm:text-sm text-neutral-700 leading-relaxed">
-        대부분의 사진들은 인스타그램에 업로드되고 있습니다.<br />
-        최근 작업의 흐름과 색감을 보시고 촬영을 결정하셔도 좋습니다. :-)
+        대부분의 사진들이 업로드되고 있습니다.<br />
+        최근 작업의 흐름과 색감을 보시고<br />
+        촬영을 결정하셔도 좋습니다. :-)
       </p>
-      <Link
-        href={BRAND.instagram}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-8 inline-flex items-center justify-center border border-neutral-700 px-6 py-3 text-xs sm:text-sm tracking-[0.2em] uppercase hover:bg-neutral-900 hover:text-white transition"
-      >
-        Instagram @sian_film
-      </Link>
+
+      {/* 버튼들을 감싸는 컨테이너 추가 */}
+      <div className="mt-8 flex flex-row gap-4"> 
+        <Link
+          href={BRAND.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center border border-neutral-700 px-6 py-3 text-xs sm:text-sm tracking-[0.2em] uppercase hover:bg-neutral-900 hover:text-white transition"
+        >
+          Instagram
+        </Link>
+        <Link
+          href={BRAND.pinterest}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center border border-neutral-700 px-6 py-3 text-xs sm:text-sm tracking-[0.2em] uppercase hover:bg-neutral-900 hover:text-white transition"
+        >
+          Pinterest
+        </Link>
+      </div>
     </section>
   );
 }
