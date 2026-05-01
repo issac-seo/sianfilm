@@ -978,6 +978,13 @@ function ReservationPartnerPanel() {
           note:
             "인스타그램 DM 또는 카카오채널로 연락주셔서 시안필름 고객님이라고 하시면 55% 할인가로 진행 가능합니다.",
         },
+        {
+          name: "블러쉬온",
+          instagram: ["@blush_on__"],
+          kakaoChannel: "블러쉬온",
+          note:
+            "네이버 예약이나 카카오채널로 연락주셔서 시안필름 고객님이라고 하시면 약 10% 할인가로 진행 가능합니다.",
+        },
       ],
     },
     {
