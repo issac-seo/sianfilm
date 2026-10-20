@@ -26,7 +26,7 @@ export const PACKAGES_2026: Pkg[] = [
         summaryPoints: [
         "디지털 원본 전체 + 아이폰스냅",
         <>원본 모두 제공 + 세부보정본 <strong className="font-bold text-pink-600">30장</strong> + 분할컷 5컷</>,
-        "3~7초 4K 가로 영상클립 7개 내외(원본)",
+        "3~7초 빈티지 캠코더 가로 영상클립 7개 내외(원본)",
         "무료 대여 소품, 조화 부케 포함",
         "작가 소장 드레스 대여 (필요 시 미리 문의주세요)",
         ],
@@ -51,7 +51,7 @@ export const PACKAGES_2026: Pkg[] = [
         featured: true,
         summaryPoints: [
         <>원본 모두 제공 + 세부보정본 <strong className="font-bold text-pink-600">20장</strong> + 분할컷 3컷</>,
-        "3~7초 4K 가로 영상클립 4개 내외(원본)",
+        "3~7초 빈티지 캠코더 가로 영상클립 4개 내외(원본)",
         "무료 대여 소품, 조화 부케 포함",
         ],
         details: [
@@ -73,11 +73,13 @@ export const PACKAGES_2026: Pkg[] = [
         },
         summaryPoints: [
         <>원본 모두 제공 + 세부보정본 <strong className="font-bold text-pink-600">10장</strong> + 분할컷 2컷</>,
+        "3~7초 빈티지 캠코더 가로 영상클립 2개 내외(원본)",
         "무료 대여 소품, 조화 부케 포함",
         ],
         details: [
             "보정본: 셀렉일부터 2주 이내 제공",
             "1장소, 의상 1벌 가능",
+            "오전만 가능",
             "지역: 서울 한정(바다 불가)"
             ],
     },    

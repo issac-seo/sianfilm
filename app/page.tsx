@@ -1,8 +1,8 @@
 /* --- 
 name : sianfilm-homepage
-createDate : 2025.09.01
-updateDate : 2026.03.11 16:18
-version : 2.2.4
+createDate : 2026.09.01
+updateDate : 2026.10.20 12:51
+version : 2.2.7
 --- */
 
 "use client";
