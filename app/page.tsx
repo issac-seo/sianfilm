@@ -1,8 +1,8 @@
 /* --- 
 name : sianfilm-homepage
 createDate : 2026.09.01
-updateDate : 2026.10.20 12:51
-version : 2.2.7
+updateDate : 2026.10.20 15:46
+version : 2.2.8
 --- */
 
 "use client";
@@ -1012,6 +1012,7 @@ function ReservationPartnerPanel() {
         { name: "고은실장님", instagram: ["@goeun_letter_"] },
         { name: "연지실장님", instagram: ["@wedding_yeonji"] },
         { name: "별하그리다", instagram: ["@byulha__grida"] },
+        { name: "향단이헬퍼", instagram: ["@hyangdan2helper"] },
       ],
     },
     {
